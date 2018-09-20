@@ -1,0 +1,44 @@
+package encriptacion;
+/**
+ *
+ * @author mauro jose landazury
+ */
+import java.io.*;
+import java.util.Scanner;
+public class Encriptacion {
+  
+    public static void main(String[] args) throws IOException {
+        InputStreamReader isr=new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        bw.write("type the message you want to encrypt");         //this message inquire the person type the message you want encrypt
+        String mensaje =br.readLine();                                    //original message
+         mensaje=mensaje.toLowerCase();                           //here they will change the letters for the  symbols
+                                                                                                        
+        //assign the value to each letter
+        mensaje=mensaje.toLowerCase();
+        mensaje=mensaje.replace("a","4");                      // to the variable with the letter "a" assign it the value of 4.
+        mensaje=mensaje.replace("e","3");                     //to the variable with the letter "e" assign it the value of 3.
+        mensaje=mensaje.replace("i","1");                      //to the variable with the letter "i" assign it the value of 1.
+        mensaje=mensaje.replace("o","0");                     //to the variable with the letter "o" assign it the value of 0..
+        mensaje=mensaje.replace("u","9");                     //to the variable with the letter "u" assign it the value of 9.
+        char array [] = mensaje.toCharArray();                 //this "char" Iuse for read the characters 
+        for(int i = 0; i<array.length; i++)                               //in this "for" I use as an accountant for a certain number of times desired
+        {
+            array[i] = (char)(array[i]+(char)1);                     //here the array will be replaced by the variable "i" which will save the written message and it will                                                                                                                 add a value
+        }
+        String encriptado = String.valueOf(array);         //This "String" was used to create the encryption variable which will keep a certain value
+        bw.write(encriptado);                                                 //Here you will read the value of the variable "encrypted" and give the sentence written with a value                                                                                                          more in letter or number
+        char arrayDESENCRIPTADO[] = encriptado.toCharArray();                 //This "char" is used to save the characters entered in the encryption
+         for (int i = 0; i<arrayDESENCRIPTADO.length; i++)                                //in this "for" is used as a counter for the written phrase
+
+        {   
+        arrayDESENCRIPTADO[i] =(char)(arrayDESENCRIPTADO[i]-(char)1);          //this "array" will make the typed phrase which is saved in the variable "i" subtract a value which will cause that in the encryption this decreases to the original form
+        }
+        bw.newLine();                                         //This is used for a jump between lines which does not appear in the phrase
+        String desencriptado = String.valueOf(arrayDESENCRIPTADO);                               //this "String" was used to save the value of the encrypted message                                                                                                                                                                             and this will be responsible for subtracting a number or letter so that                                                                                                                                                                            the original message is obtained again
+        bw.write(desencriptado);                                             //this "bw.write" has the function of giving the decryption response which has to be the initial                                                                                                                        message
+        bw.flush();
+    }
+    
+}
