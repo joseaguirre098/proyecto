@@ -1,0 +1,120 @@
+package calculator;
+/*
+ * @author msuro jose landazuri
+ */
+import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+public class Calculator {
+    
+public static int multiplicacion(int a, int b)
+    {
+        if (b==1)
+            return a;
+        else
+            return a+multiplicacion(a, b-1);
+    }
+ public static int potencia(int a, int b)
+    {
+        if(b==1)
+            return a;
+        else
+            return multiplicacion(a, potencia(a,b-1));
+    }
+    public static void main(String[] args) throws IOException {
+        // TODO code application logic here 
+        
+        // here the variable number and root will be created  InputStreamReader isr=new InputStreamReader(System.in);
+        int numberone, numbertwo, total;
+        int Oper ;
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+       BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out));
+       
+          bw.write("\n1) equal");
+        bw.write("\n2) subtrac");
+        bw.write("\n3) Divide");
+        bw.write("\n4) Multiplication");
+        bw.write("\n5) exPonentiation");
+        bw.write("\n6) square root");
+        bw.write("\n0) exit");
+
+        bw.write("\n In case of being exponentiation the number two is assumed as an exponent");
+        bw.write("\n Enter the option");
+        bw.flush();
+
+
+  // the user's option is received
+        Oper = Integer.parseInt(br.readLine());
+  // the number is asked for console   
+        bw.write("\n write the first number");
+            numberone=Integer.parseInt(br.readLine());
+//the second number is asked for console
+        bw.write("\n write the second number");
+            numbertwo=Integer.parseInt(br.readLine());
+
+        bw.flush();
+//after having the operator and the two numbers to operate
+//the case is chosen according to the operator and the operation is performed
+    switch(Oper){
+       case 1: total= numberone + numbertwo;
+        bw.write("\n the  result of the equal is: "+total);
+       break;
+       case 2: total=numberone - numbertwo;
+        bw.write("\nhe  result of the subtrac is: "+total);
+       break;
+       case 3: total=numberone / numbertwo;
+        bw.write("\nthe  result of the divide is: "+total);
+       break;
+       case 4: total= multipli (numberone,numbertwo);
+        bw.write("\nthe  result of the multiplication is: "+total);
+       break;
+       case 5: total= poten (numberone,numbertwo);
+        bw.write("\nthe  result of the exponentiation  is: "+total);
+       break;
+       case 6: total= root(numberone);
+        bw.write("\nthe  result of the square root  is: "+total);
+       break;
+       case 0:
+        bw.write("\nleaving");
+       break;
+
+
+       default: bw.write("\nincorrect Optión ");
+       break;
+}
+        bw.flush();
+}
+
+public static int poten (int a,int expo)
+{
+    
+ 
+    if(expo == 0)
+        return 1;
+    else
+           
+       return a *poten(a,expo-1);
+
+
+}
+public static int multipli (int a,int b)
+{
+    
+    if( a == 0 || b ==0)
+    return 0;
+    else 
+        if(b==1)
+            return a;
+        else 
+        return a + multipli(a,b-1);
+       
+}
+public static int root (double a)
+{
+    return (int) Math.sqrt(a);
+}
+}
+                   
+       
+        
+            
