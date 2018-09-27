@@ -1,0 +1,60 @@
+package desencriptado0;
+
+/**
+ *
+ * @author Hp 360 S103
+ */
+import java.io.*;
+import java.util.Scanner;
+public class Desencriptado0 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws IOException {
+        // TODO code application logic here
+         InputStreamReader isr=new InputStreamReader(System.in);
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+     
+        
+         bw.write("digite el mensaje desencriptado para convertirlo en la forma original:\n");
+        String mensaje =br.readLine();
+        
+         mensaje=mensaje.toLowerCase();
+         mensaje=mensaje.toLowerCase();
+         
+         mensaje=mensaje.toLowerCase();
+       
+        char array [] = mensaje.toCharArray();
+        
+        for(int i = 0; i<array.length; i++)
+        {
+            array[i] = (char)(array[i]-(char)1);
+        }
+        String DESENCRIPTADO = String.valueOf(array);
+        bw.write(DESENCRIPTADO);
+       
+        
+        char encriptado[] = DESENCRIPTADO.toCharArray();
+         for (int i = 0; i<encriptado.length; i++)
+        {   
+        encriptado[i] =(char)(encriptado[i]+(char)1);    
+        }
+        bw.newLine();
+        String desencriptado = String.valueOf(DESENCRIPTADO);
+        bw.write("el mensaje desencriptado es:\n");
+        bw.write(desencriptado);
+         mensaje=mensaje.replace("4","a");
+        mensaje=mensaje.replace("3","e");
+        mensaje=mensaje.replace("1","i");
+        mensaje=mensaje.replace("0","o");
+        mensaje=mensaje.replace("9","u");
+        
+        bw.flush();
+        
+        
+    }
+    
+}
