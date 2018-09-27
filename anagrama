@@ -1,0 +1,55 @@
+package anagramaa;
+
+/**
+ *
+ * @author Hp 360 S103
+ */
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+	
+	
+	public class Anagramaa {
+		
+		static BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
+		static BufferedWriter bw = new BufferedWriter (new OutputStreamWriter (System.out));
+		
+
+	public static void imprimeAnagramas(String x, String wyz) throws IOException {
+		if (wyz.length() <= 1) {
+		bw.write(x + wyz );
+		bw.flush();
+		} else {
+			for (int i = 0; i < wyz.length(); i++) {
+				String c = wyz.substring(i, i + 1);
+				String before = wyz.substring(0, i); 
+				String after = wyz.substring(i + 1); 
+				imprimeAnagramas(x + c, before + after);
+				
+			}
+		
+		}
+	}
+	
+	public static void main (String[] args) 
+	
+	{
+		{
+			String wyz;
+			
+			try
+			{
+				bw.write("Type the word: ");
+				bw.flush();
+				wyz = br.readLine();
+							
+				imprimeAnagramas("\n  ", wyz);
+				
+			}
+			catch (Exception ex) {}
+		}
+	}
+}
+
